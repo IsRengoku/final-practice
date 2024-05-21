@@ -2,7 +2,14 @@ import javax.swing.JOptionPane;
 
 public class Main{
     public static void main(String[] args) {
-       JOptionPane.showMessageDialog(null, "                                Universidad San Juan de Dios \n" +
+       Main ma = new Main();
+       ma.menu();
+    }
+
+    public void menu(){
+       boolean bandera = true;
+       while(bandera){
+        JOptionPane.showMessageDialog(null, "                                Universidad San Juan de Dios \n" +
        "Bienvenidos al sistema de gestión de prestamo de equipos electronicos");
        
        JOptionPane.showMessageDialog(null, "                                Menú Principal \n" +
@@ -12,14 +19,15 @@ public class Main{
                                                           " 3. Imprimir inventario de Tabletas Gráficas \n" +
                                                           " 4. Imprimir inventario de Computadores portatiles \n"+
                                                           " 5. Salir del programa");
-       boolean bandera = true;
-       while(bandera){
         int opcion = Integer.parseInt(JOptionPane.showInputDialog("ingrese la opcion deseada "));
             switch (opcion) {
             case 1:
-            
+                Estudiantes ing = new Estudiantes();
+                ing.ingenieria();
                 break;
             case 2:
+                Estudiantes dis = new Estudiantes();
+                dis.diseño();
                 break;
             case 3:
                 break;

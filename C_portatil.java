@@ -5,17 +5,27 @@ public class C_portatil {
     double precio;
     String sist_operativo;
     String procesador;
+    String ocupado;
 
     public C_portatil(){
     }
 
-    public C_portatil(String serial, String marca, double tamano, double precio, String sist_operativo, String procesador){
+    public C_portatil(String serial, String marca, double tamano, double precio, String sist_operativo, String procesador, String ocupado){
         this.serial = serial;
         this.marca = marca;
         this.tamano = tamano;
         this.precio = precio;
         this.sist_operativo = sist_operativo;
         this.procesador = procesador;
+        this.ocupado = ocupado;
+    }
+
+    public String getOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(String ocupado) {
+        this.ocupado = ocupado;
     }
 
     public String getSerial() {

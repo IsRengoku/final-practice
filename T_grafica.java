@@ -5,17 +5,27 @@ public class T_grafica {
     double precio;
     String almacenamiento;
     double peso;
+    String ocupado;
 
     public T_grafica(){
     }
 
-    public T_grafica(String serial, String marca, double tamano, double precio, String almacenamiento, double peso){
-        String Serial = serial;
-        String Marca = marca;
-        double Tamano = tamano;
-        double Precio = precio;
-        String Almacenamiento = almacenamiento;
-        double Peso = peso;
+    public T_grafica(String serial, String marca, double tamano, double precio, String almacenamiento, double peso, String ocupado){
+        this.serial = serial;
+        this.marca = marca;
+        this.tamano = tamano;
+        this.precio = precio;
+        this.almacenamiento = almacenamiento;
+        this.peso = peso;
+        this.ocupado = ocupado;
+    }
+
+    public String getOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(String ocupado) {
+        this.ocupado = ocupado;
     }
 
     public String getSerial() {

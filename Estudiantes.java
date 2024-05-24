@@ -1,36 +1,114 @@
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Estudiantes {
     
     public void ingenieria(){
         ArrayList<E_ingenieria> ingenieria = new ArrayList<>();
-        E_ingenieria estudiante = new E_ingenieria("1234", "samuel", "garcia", "317", 3, 4, "0001");
-        ingenieria.add(estudiante);
-        E_ingenieria estudiante2 = new E_ingenieria("5678", "isabel", "londono", "320", 5, 3.5, "0002");
-        ingenieria.add(estudiante2);
-        E_ingenieria estudiante3 = new E_ingenieria("0102", "maximiliano", "gonzalez", "310", 1, 3.1, "0003");
-        ingenieria.add(estudiante3);
-        E_ingenieria estudiante4 = new E_ingenieria("9098", "luz", "garcia", "319", 9, 4.6, "0004");
-        ingenieria.add(estudiante4);
-        E_ingenieria estudiante5 = new E_ingenieria("2580", "messi", "ronaldo", "107", 7, 5, "0005");
-        ingenieria.add(estudiante5);
-        herramientas obj = new herramientas();
-        obj.portatiles(ingenieria);
+        String serial = "";
+        Pattern patternAlphaNum = Pattern.compile("^[a-zA-Z0-9]+$");
+        String regexNums = "^[+-]?\\d+(\\.\\d+)?|\\*$";
+        Pattern patternNums = Pattern.compile(regexNums);
+
+        if (!ingenieria.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La lista ya contiene estudiantes.");
+            return;
+        }
+
+        boolean bandera = true;
+
+        while (bandera) {
+            String cedula = JOptionPane.showInputDialog("Digite la cedula del estudiante a ingresar:");
+            Matcher matcherCedula = patternAlphaNum.matcher(cedula);
+
+            String nombre = JOptionPane.showInputDialog("Digite el nombre del estudiante a ingresar:");
+            Matcher matcherNombre = patternAlphaNum.matcher(nombre);
+
+            String apellido = JOptionPane.showInputDialog("Digite el apellido del estudiante a ingresar:");
+            Matcher matcherApellido = patternAlphaNum.matcher(apellido);
+
+            String telefono = JOptionPane.showInputDialog("Digite el telefono del estudiante a ingresar:");
+            Matcher matcherTelefono = patternAlphaNum.matcher(telefono);
+
+            String num_Semestre = JOptionPane.showInputDialog("Digite el semestre del estudiante a ingresar:");
+            Matcher matcherSemestre = patternAlphaNum.matcher(num_Semestre);
+            int semestre = Integer.parseInt(num_Semestre);
+
+            String promedio_Acum = JOptionPane.showInputDialog("Digite el promedio acumulado del estudiante a ingresar:");
+            Matcher matcherPromedio = patternNums.matcher(promedio_Acum);
+            double promedio = Double.parseDouble(promedio_Acum);
+
+            if (matcherCedula.matches() && matcherNombre.matches() && matcherApellido.matches() &&
+                matcherTelefono.matches() && matcherSemestre.matches() && matcherPromedio.matches()) {
+
+                E_ingenieria estudiante = new E_ingenieria(cedula, nombre, apellido, telefono, semestre, promedio, serial);
+                ingenieria.add(estudiante);
+                JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos no válidos. \nNo se permiten caracteres especiales.");
+            }
+
+            int opc = JOptionPane.showConfirmDialog(null, "¿Desea ingresar otro estudiante?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opc == JOptionPane.NO_OPTION) {
+                bandera = false;
+            }
+        }
+
+        Herramientas obj = new Herramientas();
+        obj.portatiles(ingenieria, false);
     }
 
     public void diseño(){
-        ArrayList<E_diseño> diseño = new ArrayList<>();
-        E_diseño estudiante = new E_diseño("2020", "batman", "renteria", "311", "presencial", 4, 1001);
-        diseño.add(estudiante);
-        E_diseño estudiante2 = new E_diseño("3124", "beckham", "david", "700", "virtual", 6, 1010);
-        diseño.add(estudiante2);
-        E_diseño estudiante3 = new E_diseño("1015", "andres", "garcia", "300", "virtual", 2, 1000);
-        diseño.add(estudiante3);
-        E_diseño estudiante4 = new E_diseño("1970", "lokillo", "flores", "500", "presencial", 5, 1201);
-        diseño.add(estudiante4);
-        E_diseño estudiante5 = new E_diseño("1520", "juan", "martinez", "450", "presencial", 7, 1020);
-        diseño.add(estudiante5);
-        E_diseño dis = new E_diseño();
-        dis.menu_dis();
+        ArrayList<E_diseño> diseñadores = new ArrayList<>();
+        String serial = "";
+        Pattern patternAlphaNum = Pattern.compile("^[a-zA-Z0-9]+$");
+
+        if (!diseñadores.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La lista ya contiene estudiantes.");
+            return;
+        }
+
+        boolean bandera = true;
+
+        while (bandera) {
+            String cedula = JOptionPane.showInputDialog("Digite la cedula");
+            Matcher matcherCedula = patternAlphaNum.matcher(cedula);
+
+            String nombre = JOptionPane.showInputDialog("Digite el nombre");
+            Matcher matcherNombre = patternAlphaNum.matcher(nombre);
+
+            String apellido = JOptionPane.showInputDialog("Digite el apellido");
+            Matcher matcherApellido = patternAlphaNum.matcher(apellido);
+
+            String telefono = JOptionPane.showInputDialog("Digite el telefono");
+            Matcher matcherTelefono = patternAlphaNum.matcher(telefono);
+
+            String modalidad_estudio = JOptionPane.showInputDialog("Digite la modalidad de estudio");
+            Matcher matcherModalidad = patternAlphaNum.matcher(modalidad_estudio);
+
+            String cant_asignaturas = JOptionPane.showInputDialog("Digite la cantidad de asignaturas");
+            Matcher matcherAsignaturas = patternAlphaNum.matcher(cant_asignaturas);
+            int asignaturas = Integer.parseInt(cant_asignaturas);
+
+            if (matcherCedula.matches() && matcherNombre.matches() && matcherApellido.matches() &&
+                matcherTelefono.matches() && matcherModalidad.matches() && matcherAsignaturas.matches()) {
+
+                E_diseño estudiante = new E_diseño(cedula, nombre, apellido, telefono, modalidad_estudio, asignaturas, serial);
+                diseñadores.add(estudiante);
+                JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos no válidos. \nNo se permiten caracteres especiales.");
+            }
+
+            int opc = JOptionPane.showConfirmDialog(null, "¿Desea ingresar otro estudiante?", "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (opc == JOptionPane.NO_OPTION) {
+                bandera = false;
+            }
+        }
+
+        Herramientas obj = new Herramientas();
+        obj.tabletas(diseñadores, false);
     }
 }

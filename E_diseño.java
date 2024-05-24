@@ -1,5 +1,3 @@
-import javax.swing.JOptionPane;
-
 public class E_diseño {
     String cedula;
     String nombre;
@@ -7,19 +5,19 @@ public class E_diseño {
     String telefono;
     String modalidad_estudio;
     int cant_asignaturas;
-    int serial;
+    String serial;
 
     public E_diseño(){
     }
 
-    public E_diseño(String cedula, String nombre, String apellido, String telefono, String modalidad_estudio, int cant_asignaturas, int serial){
-        String Cedula = cedula;
-        String Nombre = nombre;
-        String Apellido = apellido;
-        String Telefono = telefono;
-        String Modalidad_estudio = modalidad_estudio;
-        int Cant_asignaturas = cant_asignaturas;
-        int Serial = serial;
+    public E_diseño(String cedula, String nombre, String apellido, String telefono, String modalidad_estudio, int cant_asignaturas, String serial){
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.modalidad_estudio = modalidad_estudio;
+        this.cant_asignaturas = cant_asignaturas;
+        this.serial = serial;
     }
 
     public String getCedula() {
@@ -70,44 +68,11 @@ public class E_diseño {
         this.cant_asignaturas = cant_asignaturas;
     }
 
-    public int getSerial() {
+    public String getSerial() {
         return serial;
     }
 
-    public void setSerial(int serial) {
+    public void setSerial(String serial) {
         this.serial = serial;
-    }
-
-    public void menu_dis(){
-        JOptionPane.showMessageDialog(null, "Menú estudiante diseño \n"+
-        "  1. Registrar prestamo de equipo \n"+
-        "  2. Modificar prestamo de equipo \n"+
-        "  3. Devolución de equipo \n"+
-        "  4. Buscar equipo \n"+
-        "  5. Volver al menú principal");
-        boolean bandera = true;
-        while (bandera){
-            int opc = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opción que desea realizar"));
-            switch (opc) {
-                case 1:
-                
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    bandera = false;
-                    Main ma = new Main();
-                    ma.menu();
-                    break;  
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. \n"+
-                    "Por favor, ingrese una opción válida");
-                    break;
-            }
-        }
     }
 }
